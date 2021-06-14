@@ -1,0 +1,247 @@
+<!-- ------------------------------ Etape #1 ------------------------------- -->
+
+<!-- Créer le formulaire de base et ajouter les formGroup/formControlName après avoir créé les champs dans le .ts -->
+
+<!-- <form [formGroup]="form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form> -->
+
+<!-- ------------------ Etape #2 ajouter de la validation ------------------ -->
+
+<!-- D'abord ajouter les validators dans le .ts -->
+
+<!-- <form [formGroup]="form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+        <div *ngIf="form.get('username').touched && form.get('username').invalid" class="alert alert-danger">Username is required</div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form> -->
+
+<!-- ------------------ Etape #3 - en utilisant le getter ------------------ -->
+<!-- <form [formGroup]="form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">Username is required</div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form> -->
+
+<!-- ------------------ Etape #4 - validateurs multiples ------------------- -->
+<!-- <form [formGroup]="form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+            <div *ngIf="username.errors.required">Username is required</div>
+        <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form> -->
+
+
+<!-- ------- Etape #5 - custom validator, ajouter la ligne d'erreur -------- -->
+<!-- <form [formGroup]="form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters</div>
+            <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form> -->
+
+<!-- -------------------------- Etape #6/7 - async --------------------------- -->
+<!-- <form [formGroup]="form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters</div>
+            <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space</div>
+            <div *ngIf="username.errors.shouldBeUnique">Username is already taken</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form> -->
+
+<!-- -------------------------- Etape #8 - loader -------------------------- -->
+
+<!-- <form [formGroup]="form" autocomplete="off">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+        <div *ngIf="username.pending">Checking for uniqueness...</div>
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters</div>
+            <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space</div>
+            <div *ngIf="username.errors.shouldBeUnique">Username is already taken</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form> -->
+
+<!-- ------------------------------ Etape #9 - valider quand on soumet ------------------------------- -->
+
+<!-- <form [formGroup]="form" (ngSubmit)="login()" autocomplete="off">
+    <div *ngIf="form.errors" class="alert alert-danger">
+        The username or password is invalid.
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+        <div *ngIf="username.pending">Checking for uniqueness...</div>
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters</div>
+            <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space</div>
+            <div *ngIf="username.errors.shouldBeUnique">Username is already taken</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form> -->
+
+<!-- ------------------- Etape #10 - formgroup imbriqués ------------------- -->
+
+<form [formGroup]="form" (ngSubmit)="login()" autocomplete="off">
+    <div *ngIf="form.errors" class="alert alert-danger">
+        The username or password is invalid.
+    </div>
+    <div formGroupName="account"> <!-- ajouter une div qui entoure avec le nom du formgroup -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input
+                formControlName="username"
+                id="username"
+                type="text"
+                class="form-control">
+            <div *ngIf="username.pending">Checking for uniqueness...</div>
+            <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+                <div *ngIf="username.errors.required">Username is required</div>
+                <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters</div>
+                <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space</div>
+                <div *ngIf="username.errors.shouldBeUnique">Username is already taken</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                formControlName="password"
+                id="password"
+                type="text"
+                class="form-control">
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form>
+
+<!-- ------------------------ Etape #11 - formarray ------------------------ -->
+

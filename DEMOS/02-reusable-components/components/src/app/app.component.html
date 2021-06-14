@@ -1,0 +1,29 @@
+<!-- ------------------------- Input() et Output() ------------------------- -->
+<!-- ------------------------------ Etape #1 ------------------------------- -->
+<favorite [isFavorite]="post.isFave"></favorite>
+
+<!-- ------------------------------ Etape #2 ------------------------------- -->
+<favorite [isFavorite]="post.isFave" (change)="onFavoriteChange()"></favorite>
+
+<!-- ------------------------------ Etape #3 ------------------------------- -->
+<favorite [isFavorite]="post.isFave" (change)="onFavoriteChange($event)"></favorite>
+
+
+
+
+<!-- --------------------- ng-content et ng-container ---------------------- -->
+<!-- ------------------------------ Etape #7 ------------------------------- -->
+
+<bootstrap-panel></bootstrap-panel>
+
+<!-- ------------------------------ Etape #8 ------------------------------- -->
+<bootstrap-panel>
+  <div class="heading">Heading</div>
+  <div class="body">Body</div>
+</bootstrap-panel>
+
+<!-- ------------------------------ Etape #9 ------------------------------- -->
+<bootstrap-panel>
+  <ng-container class="heading">Heading</ng-container>
+  <ng-container class="body">Body</ng-container>
+</bootstrap-panel>

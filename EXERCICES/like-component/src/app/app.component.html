@@ -1,0 +1,13 @@
+<ul>
+  <li *ngFor="let tweet of tweets">
+    <likeComponent [isLiked]="tweet.isLiked" [likesCount]="tweet.likesCount"></likeComponent>
+  </li>
+</ul>
+
+<!--
+  // améliorations à approfondir (sans services, uniquement input/output et ce qui a été vu jusque maintenant...)
+  <listComponent [elements]="tweets">
+    <ng-container class="contenu"><likeComponent></likeComponent></ng-container>
+  </listComponent>
+
+-->

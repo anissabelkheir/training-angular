@@ -1,0 +1,121 @@
+{{ title }}
+
+<!-- ngif -->
+
+<div *ngIf="list.length > 0">Il y a des éléments</div>
+<div *ngIf="list.length == 0">Il n'y a pas d'élements</div>
+
+<!-- -->
+
+<div *ngIf="list.length > 0 then yesList else noList">Il y a des éléments</div>
+<ng-template #yesList>Il y a des éléments</ng-template>
+<ng-template #noList>Il n'y a pas d'élements</ng-template>
+
+<!--  -->
+
+<div [hidden]="list.length == 0">Il y a des éléments</div>
+<div [hidden]="list.length > 0">Il n'y a pas d'élements</div>
+
+<!-- ngswitchcase -->
+
+<ul class="nav nav-pills">
+  <li class="nav-item"><a href="#" [class.active]="viewMode == 'map'" class="nav-link" (click)="viewMode = 'map'">Map View</a></li>
+  <li class="nav-item"><a href="#" [class.active]="viewMode == 'list'" class="nav-link" (click)="viewMode = 'list'">List View</a></li>
+</ul>
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'map'">Map View Content</div>
+  <div *ngSwitchCase="'list'">List View Content</div>
+  <div *ngSwitchDefault>Other Content</div>
+</div>
+
+<!-- ngfor -->
+
+<!-- <ul>
+  <li *ngFor="let course of courses"> {{ course.name }} </li>
+</ul> -->
+
+<!--  -->
+
+<!-- <ul>
+  <li *ngFor="let course of courses; index as i"> {{ i }} - {{ course.name }} </li> on prend valeur de l'index et on le met dans i (variable locale)
+</ul> -->
+
+<!-- <ul>
+  <li *ngFor="let course of courses; even as isEven">{{ course.name }} <span *ngIf="isEven">*</span></li> on prend valeur de l'even et on le met dans isEven, c'est un boolean
+</ul> -->
+
+<!--  -->
+
+<!-- <button (click)="onAdd()">Add</button>
+<ul>
+  <li *ngFor="let course of courses"> {{ course.name }} </li>
+</ul>
+
+<ul>
+  <li *ngFor="let course of courses"> {{ course.name }} <button (click)="onRemove(course)">Remove</button></li>
+</ul>
+
+<ul>
+  <li *ngFor="let course of courses"> {{ course.name }} <button (click)="onChange(course)">Change</button></li>
+</ul> -->
+
+<!-- ngIf simuler serveur -->
+
+<!-- <button (click)="loadCourses()">Load</button>
+<ul>
+  <li *ngFor="let course of courses"> {{ course.name }} </li>
+</ul> -->
+<!-- recharge à chaque fois que je clique sur le bouton => utiliser le trackby -->
+
+<!-- <button (click)="loadCourses()">Load</button>
+<ul>
+  <li *ngFor="let course of courses; trackBy: trackCourse"> {{ course.name }} </li>
+</ul> -->
+
+<!-- exemple sur le ngClass mais ne fonctionne pas avec fontawesome... Trouver exemple avec class -->
+<!-- <fa-icon
+  [icon]="isSelected ? sStar : rStar"
+  (click)="onClick()"
+  ></fa-icon> -->
+
+  <span
+    class="toto"
+    [class.active]="isSelected"
+    [class.inactive]="!isSelected"
+
+    [ngClass]="{
+      'active' : isSelected,
+      'inactive' : !isSelected
+    }"
+    (click)="onClick()"
+    >toto</span>
+
+<!-- ngStyle -->
+
+<button
+    [style.backgroundColor]="canSave ? 'blue' : 'gray'"
+    [style.color]="canSave ? 'white' : 'black'"
+    [style.fontWeight]="canSave ? 'bold' : 'normal'"
+
+    [ngStyle]="{
+      'backgroundColor': canSave ? 'blue' : 'gray',
+      'color': canSave ? 'white' : 'black',
+      'fontWeight': canSave ? 'bold' : 'normal'
+    }"
+>button</button>
+
+
+<!--  -->
+<!-- <p>{{ task.assignee.name }}</p> -->
+<!-- <p *ngIf="task.assignee">{{ task.assignee.name }}</p> -->
+<p>{{ task.assignee?.name }}</p> <!-- safe traversal operator : si null ou undefined, angular va l'ignorer -->
+
+
+<!-- custom directives -->
+
+<!-- <input type="text" appInputFormat [format]="'uppercase'" /> --> <!-- on veut formater ce contenu en utilisant une directive => ng g d input-format -->
+<input type="text" [appInputFormat]="'uppercase'" /> <!-- formater sur cette forme là : (123)456-7890 => ng g d input-format -->
+
+<zippy title="shipping details">
+  Shipping Details Content
+</zippy>

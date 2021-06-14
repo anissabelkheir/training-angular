@@ -1,0 +1,96 @@
+<!-- ------------------------------- Etape 1 ------------------------------- -->
+<!-- <h2>{{ title }}</h2>
+<h2>{{ getTitle() }}</h2> -->
+
+
+
+<!-- ------------------------------- Etape 2 ------------------------------- -->
+<!-- <ul>
+<li *ngFor="let movie of movies">{{ movie }}</li>
+</ul> -->
+
+<!-- ------------------------------- Etape 5 ------------------------------- -->
+
+<!-- <img src="{{ imgUrl }}" alt="picsum" /> -->
+
+
+<!-- ------------------------------- Etape 6 ------------------------------- -->
+
+<!-- <img [src]="imgUrl" alt="picsum" /> -->
+
+<!-- quand attribut n'existe pas dans le DOM : -->
+<!-- <table>
+    <tr>
+        <td [attr.colspan]="cols"></td>
+    </tr>
+</table> -->
+
+<!-- -------------------- Etape 7 : installer bootstrap -------------------- -->
+<!-- ne pas oublier d'ajouter bootstrap dans le style.scss global -->
+
+<!-- <button class="btn btn-primary">Save</button> -->
+
+<!-- ------------------------------- Etape 8 ------------------------------- -->
+
+<!-- <button class="btn btn-primary" [class.active]="isActive">Save</button> -->
+
+<!-- ------------------------------- Etape 9 ------------------------------- -->
+<!-- <button class="btn btn-primary" [style.backgroundColor]="isActive ? 'red' : 'green'">Save</button> -->
+
+<!-- ---------------------- Etape 10 - Events Binding ---------------------- -->
+
+<!-- <button (click)="onSave()">Save</button> -->
+
+<!-- ------------------------------ Etape 11 ------------------------------- -->
+
+<!-- <button (click)="onSave($event)">Save</button> -->
+
+<!-- ---------------------------- Etape 12-13 --------------------------------->
+
+<!-- <div (click)="onDivClicked()">
+    <button (click)="onSave($event)">Save</button>
+</div> -->
+
+<!-- --------------------- Etape 14 - event filtering ---------------------- -->
+
+<!-- <input (keyup)="onKeyUp($event)" /> -->
+
+<!-- ------------------------------ Etape 15 ------------------------------- -->
+
+<!-- Dans angular, on peut préciser de suite le type de keyup (ou keydown) -->
+<!-- <input (keyup.enter)="onKeyUp()" /> -->
+
+
+<!-- -------------------- Etape 16 - template variables -------------------- -->
+
+<!-- <input (keyup.enter)="onKeyUp($event)" /> -->
+
+<!-- ------------------------------ Etape 17 ------------------------------- -->
+
+<!-- <input #email (keyup.enter)="onKeyUp(email.value)" /> -->
+<!-- <input [value]="email" (keyup.enter)="onKeyUp()" /> -->
+
+<!-- --------------------- Etape 18 - two way binding ---------------------- -->
+
+<!-- 1. <input [value]="email" (keyup.enter)="email = $event.target.value; onKeyUp()" /> -->
+<!-- <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" /> --> <!-- je vais devoir importer un module forms dans app.module.ts -->
+
+
+<!-- ------------------------------ Etape 19 PIPES ------------------------------- -->
+<!-- Commencer avec ce template : -->
+
+    {{ course.title }}<br />
+    {{ course.students }}<br />
+    {{ course.rating }}<br />
+    {{ course.price }}<br />
+    {{ course.releaseDate }}
+
+<!-- Ensuite mettre le title en uppercase (et montrer comment enchaine avec le lowercase), puis le number sur students : -->
+    {{ course.title | uppercase | lowercase }}<br />
+    {{ course.students | number: '' :'fr' }} <!--  number seul va séparer tous les 3 chiffres par une , à l'américaine. On peut importer le module de langue dans app.module --> <br />
+    {{ course.rating | number: '1.2-2' :'fr' }} <!-- 1er chiffre = l'entier, suivi du min et max de chiffres derrière la , --><br />
+    {{ course.price | currency: 'EUR' : 'symbol-narrow' : '' : 'fr' }}<br />
+    {{ course.releaseDate | date : 'longDate' : '' : 'fr' }}
+
+<!-- ------------------------ Etape 20 CUSTOM PIPES ------------------------ -->
+    {{ text | summary : 10 }} <!-- d'abord juste summary, après on s'arrange pour ajouter des arguments -->

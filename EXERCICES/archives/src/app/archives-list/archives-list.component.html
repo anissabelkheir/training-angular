@@ -1,0 +1,9 @@
+<ul>
+    <li *ngFor="let elem of archivesList">
+        <a [routerLink]="['/archives', elem.year, elem.month]">
+            {{ elem.year }}/{{ elem.month }}
+        </a>
+    </li>
+</ul>
+
+<input (keyup.enter)="addElem()" />

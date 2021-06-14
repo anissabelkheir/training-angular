@@ -1,0 +1,32 @@
+<!-- <form [formGroup]="form">
+    <input type="text" class="form-control" (keyup.enter)="addTopic(topic)" #topic>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let t of form.get('topics').controls">
+            {{ t.value}}
+        </li>
+    </ul>
+</form> -->
+
+
+<!-- REFACTORING : -->
+<!-- <form [formGroup]="form">
+    <input type="text" class="form-control" (keyup.enter)="addTopic(topic)" #topic>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let t of topics.controls">
+            {{ t.value}}
+        </li>
+    </ul>
+</form> -->
+
+
+
+
+<!--  Ajout du click pour remove : -->
+<form [formGroup]="form">
+    <input type="text" class="form-control" (keyup.enter)="addTopic(topic)" #topic>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let t of topics.controls"  (click)="removeTopic(topic)">
+            {{ t.value}}
+        </li>
+    </ul>
+</form>

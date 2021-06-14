@@ -1,0 +1,13 @@
+fa-icon {
+    font-size: 2em;
+    color: #4d4d4d;
+    &.liked {
+        color: deeppink;
+    }
+}
+
+span {
+    color: #4d4d4d;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.8em;
+}

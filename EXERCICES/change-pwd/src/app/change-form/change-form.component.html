@@ -1,0 +1,33 @@
+<form [formGroup]="form" autocomplete="off">
+    <div class="form-group">
+        <label for="old">Old Password</label>
+        <input type="text" class="form-control" id="old" required formControlName="old">
+        <div *ngIf="old.pending">Pending...</div>
+        <div *ngIf="old.touched && old.invalid" class="alert alert-danger">
+            <div *ngIf="old.errors.required">Old Password is required</div>
+            <div *ngIf="old.errors.passIsInvalid">Old Password is not valid</div>
+        </div>
+    </div>
+
+    <div formGroupName="new">
+        <div class="form-group">
+            <label for="first">New Password</label>
+            <input type="text" class="form-control" id="first" required formControlName="first">
+            <div *ngIf="first.touched && first.invalid" class="alert alert-danger">
+                <div *ngIf="first.errors.required">New Password is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="second">Confirm Password</label>
+            <input type="text" class="form-control" id="second" required formControlName="second">
+            <!-- <div *ngIf="second.touched && second.errors?.required" class="alert alert-danger">Confirm Password is required</div>
+            <div *ngIf="first.valid && second.touched && form.invalid && form.errors?.pwdMustMatch" class="alert alert-danger">Confirm Password doesn't match</div> -->
+
+            <div *ngIf="first.valid && second.touched && new.invalid" class="alert alert-danger">
+                <div *ngIf="second.errors?.required">Confirm Password is required</div>
+                <div *ngIf="new.errors?.pwdMustMatch">Confirm Password doesn't match</div>
+            </div>
+        </div>
+    </div>
+
+</form>

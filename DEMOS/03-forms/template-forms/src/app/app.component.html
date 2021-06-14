@@ -1,0 +1,108 @@
+<!-- ------------------------------ Etape #1 ------------------------------- -->
+
+<!-- <form>
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input type="text" id="firstname" name="fn" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea  id="comment" name="cmt" class="form-control"></textarea>
+  </div>
+  <button class="btn btn-secondary">Submit</button>
+</form> -->
+
+<!-- ------------------------------ Etape #2 ------------------------------- -->
+
+<!-- <form #f="ngForm" (ngSubmit)="submit(f)">
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input type="text" ngModel #firstName="ngModel" id="firstname" name="fn" class="form-control" required minlength="5" pattern="banana" (change)="log(firstName)" />
+    // <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">Firstname is required</div>
+    <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">
+      <div *ngIf="firstName.errors.required">Firstname is required</div>
+      <div *ngIf="firstName.errors.minlength">Should be min {{ firstName.errors.minlength.requiredLength }} characters</div>
+      <div *ngIf="firstName.errors.pattern">Firstname doesn't match pattern</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea  id="comment" name="cmt" class="form-control"></textarea>
+  </div>
+  <button class="btn btn-secondary">Submit</button>
+</form> -->
+
+<!-- ------------------------------ Etape #3 ------------------------------- -->
+
+<!-- <form #f="ngForm" (ngSubmit)="submit(f)">
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input type="text" ngModel #firstName="ngModel" id="firstname" name="fn" class="form-control" required minlength="5" pattern="banana" (change)="log(firstName)" />
+    <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">
+      <div *ngIf="firstName.errors.required">Firstname is required</div>
+      <div *ngIf="firstName.errors.minlength">Should be min {{ firstName.errors.minlength.requiredLength }} characters</div>
+      <div *ngIf="firstName.errors.pattern">Firstname doesn't match pattern</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea  id="comment" name="cmt" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="contactMethod">contact Method</label>
+    <select name="" id="contactMethod" class="form-control" ngModel name="contactMethod" multiple>
+        <option *ngFor="let method of contactMethods" [value]="method.id">{{method.name}}</option>
+    </select>
+  </div>
+  <button class="btn btn-secondary">Submit</button>
+</form> -->
+
+<!-- ------------------------------ Etape #4 ------------------------------- -->
+
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input type="text" ngModel #firstName="ngModel" id="firstname" name="fn" class="form-control" required minlength="5" pattern="banana" (change)="log(firstName)" />
+    <!-- <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">Firstname is required</div> -->
+    <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">
+      <div *ngIf="firstName.errors.required">Firstname is required</div>
+      <div *ngIf="firstName.errors.minlength">Should be min {{ firstName.errors.minlength.requiredLength }} characters</div>
+      <div *ngIf="firstName.errors.pattern">Firstname doesn't match pattern</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea  id="comment" name="cmt" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="contactMethod">contact Method</label>
+    <select name="" id="contactMethod" class="form-control" ngModel name="contactMethod" multiple>
+        <option *ngFor="let method of contactMethods" [value]="method.id">{{method.name}}</option>
+    </select>
+  </div>
+  <!-- <div class="radio">
+      <label>
+          <input type="radio" name="contactMethod" value="1" ngModel>
+          Email
+      </label>
+  </div>
+  <div class="radio">
+      <label>
+          <input type="radio" name="contactMethod" value="2" ngModel>
+          Phone
+      </label>
+  </div> -->
+  <div class="radio" *ngFor="let method of contactMethods">
+    <label>
+        <input type="radio" name="contactMethod" [value]="method.id" ngModel>
+        {{ method.name }}
+    </label>
+  </div>
+
+  <div class="toto">
+    <input type="time" [value]="data.start" [(ngModel)]="data.start" name="start" />
+  </div>
+
+  <p>{{ f.value | json }}</p>
+  <button class="btn btn-secondary" [disabled]="!f.valid">Submit</button>
+</form>

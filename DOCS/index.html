@@ -1,0 +1,778 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Idées jetées comme ça pour les slides. À travailler -->
+			<!-- ---------------------------- INTRODUCTION ----------------------------- -->
+			<section>
+				<h1>INTRODUCTION</h1>
+			</section>
+			<section>
+				<h2>C'est quoi Angular ?</h2>
+				Framework (cadre de travail)
+				Permet de travailler de manière plus efficace et plus organisée
+				-> On récupère les mêmes fonctions qu'on réutilise dans nos projets = framework personnel
+			</section>
+			<section>
+				<h2>Site web ou application web ?</h2>
+				Site web = application serveur qui envoie des pages html vers le navigateur client, il faut faire une
+				requête au serveur
+				Application web = page html qui contient suffisamment d'autonomie pour répondre aux requêtes du client,
+				sans redemander à chaque fois au serveur => + rapide
+			</section>
+			<!-- <section>
+	<h2>AngularJS vs Angular</h2>
+	Changements apportés à Angular depuis AngularJS (ne sera plus maintenue après 2018) ?
+	- Contrôleurs
+	- Directives (remplacés par 3 autres notions: Composants, Directives d'attributs et Directives structurelles)
+	- Le $scope
+	- Les Modules
+	- jQLite (retirée => meilleure performance )
+	- Two-Way Data Binding (retirée de base)
+	<aside>
+		OPTIONNEL -> Pour un groupe qui ne connaissait pas AngularJS = pas utile.
+	</aside>
+</section> -->
+			<section>
+				<h2>Framework orienté Composants</h2>
+				Composants assemblés = application
+				Composant = fichier html + class js dédié à une tâche particulière (section autonome au seind d'une page
+				web) ex : composant pour affichage de news
+				Standard Web Components (découpe page web en fonction de son rôle) :
+				- Les éléments personnalisés (Custom Elements) permettent de créer ses propres éléments HTML valides.
+				- Le DOM de l'ombre (Shadow DOM) permet d'encapsuler du code HTML, CSS et JavaScript qui n'interfère pas
+				avec le DOM principal de la page web.
+				- Les templates HTML (HTML Templates) permettent de développer des morceaux de code HTML qui ne sont pas
+				interprétés au chargement de la page.
+				- Les imports HTML (HTML Imports) permettent d'importer du HTML dans une autre page HTML.
+			</section>
+
+			<!-- ------------------------ CREATION D'UN PROJET ------------------------- -->
+			<section>
+				<h1>INSTALLATION</h1>
+			</section>
+			<section>
+				<h2>Installation</h2>
+				- Installer le client Angular (angular-cli)
+				- Création d'une app via angular-cli
+				<aside>
+					- Angular cli ( = command line interface) (npm install -g @angular/cli@latest)
+
+					Création d'une app via angular-cli
+					- ng new projet
+					- ng serve
+				</aside>
+			</section>
+
+			<!-- ----------------------------- FONDAMENTAUX ----------------------------- -->
+			<section>
+				<h2>Première application</h2>
+				Projet fondamentaux
+				<code>ng new fondamentaux</code>
+				<code>ng serve</code>
+				Structure :
+				- e2e
+				- node-modules
+				- src
+				- app
+				- assets
+				- environments
+				- autres...
+				<aside>
+					Création d'un projet
+					<code>ng new fondamentaux</code> (pas de chiffres)
+					<code>ng serve</code> (lance le server angular)
+
+					Structure :
+					- e2e (end to end) : testing
+					- src -> source code
+					-- app : modules + components
+					-- assets
+					-- environments : prod + dev
+					-- index.html + main.ts (point d'entrée) + ...
+					- angular-cli.json, editorconfig, gitignore, ...
+
+					Modifier le titre, regarder les changements
+				</aside>
+			</section>
+
+			<!-- ---- FONDAMENTAUX - aperçu rapides des différentes fonctionnalités ---- -->
+			<section>
+				<h1>FONDAMENTAUX</h1>
+				<h2>aperçu rapides des différentes fonctionnalités</h2>
+			</section>
+			<section>
+				<h1>FONDAMENTAUX</h1>
+				<h2>COMPOSANTS</h2>
+			</section>
+			<section>
+				<h3>Créer un composant à la main</h3>
+				L'importer dans le app module
+				L'intégrer dans la vue de app
+				<aside>
+					Créer un composant à la main :
+					- Le créer (dans src > app : movies.component.ts)
+					- L'ajouter dans un module (dans app.module.ts importe le MoviesComponent)
+					- Ajouter un tag html (dans app.component.html ajouter le tag "movies")
+				</aside>
+			</section>
+			<section>
+				<h3>Créer un composant via angular cli</h3>
+				<code>ng g c movie</code>
+				<aside>
+					<code>ng g c movie</code> (ng generate component course)
+					(Possibilité de le créer dans un dossier <code>ng g c components/movie</code>)
+					a généré plusieurs fichiers et les a ajouté automatiquement dans app.module.ts
+				</aside>
+			</section>
+			<section>
+				<h1>FONDAMENTAUX</h1>
+				<h2>TEMPLATES, DIRECTIVES & SERVICES</h2>
+			</section>
+			<section>
+				Les templates HTML
+				Les directives
+				Les services
+				- Injection de dépendance
+				<aside>
+					templates :
+					- dans movies.component ajouter un title = "qqch" (etape 1)
+					- afficher le titre dans le template
+
+					directives :
+					- créer un array liste de films et l'afficher dans le template avec un ngFor (etape 2)
+
+					services :
+					- movies.service.ts (etape 3)
+					- importer dans movies.component.ts
+					- ne pas oublier d'ajouter dans app.module.ts
+
+					Injection dépendance : (etape 4)
+					- dans le constructeur ajouter la référence dans les ()
+					- singleton
+				</aside>
+			</section>
+			<section>
+				<h1>FONDAMENTAUX</h1>
+				<h2>SERVICES</h2>
+			</section>
+			<section>
+				Services via angular-cli
+				<code>ng g s email</code>
+
+				<aside>
+					<code>ng g s email</code> (ng generate service)
+					- crée deux fichiers : email.service.ts et le spec.ts
+				</aside>
+			</section>
+
+			<!-- ---------------------- EXERCICE #1 : AUTHORS-APP ---------------------- -->
+			<section>
+				<h1>EXERCICE #1</h1>
+			</section>
+			<section>
+				Exercice #1 (authors):
+				- Créer un composant "authors"
+				- Titre : 3 Auteurs
+				- Contenu : liste : Auteur 1, Auteur 2, Auteur 3
+				<aside>
+					cf dossier EXERCICES : authors-app
+				</aside>
+			</section>
+
+			<!-- ------------- Affichage de données et gestion des events -------------- -->
+			<section>
+				<h1>
+					Affichage de données et gestion des events
+				</h1>
+			</section>
+			<!-- --------------------------- Property Binding -------------------------- -->
+			<section>
+				<h1>Affichage de données</h1>
+			</section>
+			<section>
+				Property binding
+				- Attribut html
+				- Ajouter une valeur dynamique via les {{}}
+				- Utiliser l'attribut html entouré de []
+				<aside>
+					(Etapes 5 et 6)
+					- retour hello-world
+					- ajout imageUrl ---> binding src
+					- ajout [attr.colspan]
+				</aside>
+			</section>
+
+			<!-- ------------------------- Installer bootstrap ------------------------- -->
+			<section>
+				<h1>Installation de bootstrap</h1>
+			</section>
+			<section>
+				Installer bootstrap (ou autre)
+				<code>npm install bootstrap --save</code>
+				- importer dans le style global
+				TADAM.
+				<aside>
+					(Etape 7)
+					--save pour sauvegarder dans le projet en tant que dépendance
+					--save-dev pour sauvegarder dans le projet en tant que dépendance de dev (ne sera pas inclus dans le
+					build de prod)
+
+					Créer un bouton dans movies.component.html
+				</aside>
+			</section>
+
+			<!-- ---------------------------- Class/Style Binding ---------------------------- -->
+			<section>
+				<h1>Classes et styles dynamiques</h1>
+			</section>
+			<section>
+				Class binding
+				Style binding
+				<aside>
+					Class binding : (etape 8)
+					- isActive= true (dans le controller)
+					- [class.active]="isActive" (dans la vue)
+					Style binding : (etape 9)
+					- [style.backgroundColor]="isActive ? 'blue' : 'white'" (dans la vue)
+				</aside>
+			</section>
+
+			<!-- --------------------------- Events binding ---------------------------- -->
+			<section>
+				<h1>Évènements</h1>
+			</section>
+			<section>
+				Event Binding
+				Event Filtering
+				<aside>
+					Event Binding
+					- button onSave() (etape 10)
+					- onSave($event) (etape 11)
+					- Event Bubbling (etapes 12-13)
+					Event Filtering (etapes 14...)
+					- keyup.enter
+				</aside>
+			</section>
+
+			<!-- -------------------------- template variable -------------------------- -->
+			<section>
+				<h1>Template variables</h1>
+			</section>
+			<section>
+				Template variables
+				2way Binding
+				- Pas natif
+				- Importer FormsModule
+				<aside>
+					Template variables
+					- Ajouter #email dans input
+					- passer email.value dans le keyup
+					- le récupérer dans le controller
+					2way Binding
+					- template variable
+					- binding property
+					- two way binding property (importer FormsModule)
+				</aside>
+			</section>
+
+			<!-- -------------------------------- Pipes -------------------------------- -->
+
+			<section>
+				<h1>Pipes</h1>
+			</section>
+			<section>
+				Pipes
+				- Built-in pipes (uppercase/lowercase, number, currncy, date,...)
+				- Internationalization
+				- custom pipes
+				<aside>
+					Pipes
+					- built-in pipes (lowercase, uppercase, decimal(=number), currency, percent)
+					- importer module dans app.module pour la gestion du fr
+					Custom Pipes
+					- summary (créer un pipe pour raccourcir un texte trop long)
+					- summary.pipe.ts
+				</aside>
+			</section>
+
+			<!-- ----------------------- Exercice #2 : favorite ------------------------ -->
+			<section>
+				<h1>EXERCICE #2</h1>
+			</section>
+			<section>
+				Exercice #2 : favorite (module import, event binding)
+				- créer un nouveau projet + un composant "favorite"
+				- étoile vide (utiliser fontawesome - faStar)
+				- quand on click elle se rempli (autre icone)
+				<aside>
+					Solution (cf dans les exercices "favorite"):
+					https://github.com/FortAwesome/angular-fontawesome
+					- Installer Font Awesome en regardant la doc
+					- Chercher comment faire fonctionner en important des modules
+					- Regarder dans la doc comment implémenter
+					- Utiliser le class binding, et l'event binding...
+				</aside>
+			</section>
+
+			<!-- ---------------------- Exercice #3 : custom pipe ---------------------- -->
+			<section>
+				<h1>EXERCICE #3</h1>
+			</section>
+			<section>
+				Exercice #3 : movie-case (custom pipe)
+				- créer un nouveau projet
+				- créer un pipe qui transform un texte quelconque en format "titre"
+				- Exemple : "La planète des singes" => "La Planète des Singes"
+				- Exemple : "La colline a des yeux" => "La Colline a des Yeux"
+				- Exemple : "La bElLe aU bOIs DORmant" => "La Belle au Bois Dormant"
+				<aside>
+					cf exo : title-case
+					(custom pipe = ng g p title-case)
+				</aside>
+			</section>
+
+			<!-- ------------------------- Reusable component ------------------------- -->
+			<section>
+				Re-usable components
+			</section>
+			<section>
+				Composant ré-utilisable
+				- Comment créer un composant "indépendant"
+				- Input()
+				- Output()
+				- Les templates
+				- Les styles
+				- Shadow DOM
+				- ngContent / ngContainer
+				<aside>
+					Re-usable components (dossier DEMOS/reusable-components)
+					https://github.com/FortAwesome/angular-fontawesome
+					- mettre component favorite dans component parent et créer obj "post" qui contient un isFavorite
+					- On veut pouvoir ajouter des propriétés dans la balise favorite
+					- Input + aliasing
+					- Output + event emitter + passing event data ($event = valeur passée dans le .emit(), montrer avec
+					boolean, puis obj, puis ajout interface) + aliasing
+					- Usage des templates (les templates externes sont tous compilés dans main.bundle.js (inspecteur
+					d'éléments > network) et donc aucune requête supplémentaire
+					- Appliquer un style 3 méthodes : styleUrls (array avec plusieurs files), styles : [`body { prop :
+					value}`] (comme template), inline dans html (balise style)
+					- View encapsulation (shadow dom) : le css de mon composant ne "déborde" pas dans le reste du site
+					Shadow DOM = spécification qui permet l'encapsulation du dom et styles : ça scope les styles et
+					éléments dans le composant
+					note perso : Regarder exemple sur la video de mosh hamedani à la min 2, dans "view encapsulation"
+					- ngContent
+					Créer bootstrap-panel component
+					Dans le panel html créer mon panel (div pour header, autre pour body)
+					Pour rendre ce contenu modifiable de l'extérieur ajouter ng-content avec une class et dans le app
+					html mettre le contenu dans une div qui a cette classe
+					Sauf que ça génère une div en trop, donc à la place de la div avec la class, on met un ng-container
+				</aside>
+			</section>
+
+			<!-- --------------------- Exercice #4 : LikeComponent --------------------- -->
+			<section>
+				<h1>EXERCICE #4</h1>
+			</section>
+			<section>
+				Exercice #4 : Like
+				- Utiliser ce qui a été vu pour créer un component réutilisable
+				- Quand on click sur l'icône (faHeart), elle se met en couleur (deepink), qd on retire le click elle se
+				met en grisé
+				- Si c'est liké, le nombre de likes augmente de 1
+				<aside>
+					https://github.com/FortAwesome/angular-fontawesome
+					Très ressemblant au favorite.
+				</aside>
+			</section>
+
+			<!-- ----------------------------- Directives ------------------------------ -->
+			<section>
+				<h1>Directives</h1>
+			</section>
+			<section>
+				Directives
+				- ngFor
+				- ngIf
+				- ngSwitchCase
+				- ngClass
+				- ngStyle
+			</section>
+
+			<!-- ------------------------- EXERCICE #5 - Zippy ------------------------- -->
+			<section>
+				<h1>EXERCICE #5</h1>
+			</section>
+			<section>
+				Exercice #5 : Zippy
+				- Créer un nouveau projet + composant Zippy
+				- Créer un élément qui est masqué de base et qui s'affiche lorsque l'on clique sur le titre
+				<aside>
+					cf correction exo zippy
+					Un genre de menu accordéon mais quand on clique sur le titre le contenu s'affiche
+				</aside>
+			</section>
+
+			<!-- ------------------------ Template Driven forms ------------------------ -->
+			<section>
+				<h1>Formulaires</h1>
+			</section>
+			<section>
+				Template driven forms
+				- A partir d'un formulaire HTML classique
+				- ngForm
+				- ngModel
+				- touched/untouched, dirty/pristine, valid/invalid
+				- 2way binding
+				- Form object
+				- Erreurs et types d'erreurs
+				<aside>
+
+				</aside>
+
+			</section>
+
+			<!-- ---------------------- EXERCICE #6 - Formulaires ---------------------- -->
+			<section>
+				<h1>EXERCICE #6</h1>
+			</section>
+			<section>
+				Exercice #6 : Formulaires
+				Créer un formulaire avec 3 champs
+				- Intitulé du cours (required, min 5 chars)
+				- Catégories : 3 valeurs dropdown (development, art, language)
+				- Checkbox "J'accepte les conditions... blabla" (ou RGPD)
+				- json object pour affichage contenu
+				<aside>
+					cf correction exo template form
+				</aside>
+			</section>
+
+			<!-- --------------------------- Reactive Forms ---------------------------- -->
+			<section>
+				<h1>Reactive Forms</h1>
+			</section>
+			<section>
+				Reactive forms
+				- Créer un Formulaire
+				- Ajouter de la validation
+				- Custom validation
+				- Async Operations
+				- Async Validators
+				- Ajout d'un loader
+				- Valider à la soumission du formulaire
+				- FormGroup imbriqués
+				- FormArray
+				- FormBuilder
+				<aside>
+					créer un form signup.
+					dans le .ts importer FormGroup et FormControl
+					créer un form = new FormGroup()
+					FormControl pour créer un champ, FormGroup pour créer plusieurs champs
+					Dans html : ajouter [FormGroup]="nom-du-form-créé-dans-le-.ts"
+					Et dans les champs ajouter le formControlName="nom-du-champ"
+					-> importer reactiveFormsModule dans le app.module
+
+					Validation :
+					on n'ajoute pas de validation en html comme pour les template forms, donc déjà ajouter les
+					Validators.required dans le .ts
+					ensuite, dans l'html, on ne doit plus mettre de ngModel tout le tralala... : utiliser
+					form.get('username').touched (par exemple), mais c'est un peu long...
+					Créer une propriété dans le .ts (un getter) et l'utiliser dans l'html
+					Montrer comment faire pour mettre plusieurs erreurs (simplement les mettre dans un array dans le
+					.ts)
+
+					Custom Validation :
+					Créer un username.validators.ts dans le dossier du composant
+					Validation custom : username ne peut pas contenir d'espace
+					L'ajouter dans le .ts
+					Mettre la ligne de code en + pour afficher l'erreur dans l'html
+
+
+					Async operations / async validator (etapes 6 et 7)
+					Dans la class de validation créée pour le username, ajouter une methode
+					Montrer une simulation server avec un setTimeout
+					ça ne fonctionne pas à cause du return => il faut retourner une promise
+
+					Ajouter un loader pour patienter le temps de checker si le username est unique :
+					dans l'html ajouter le username.pending
+
+					Valider lors de la soumission du formulaire : ajout d'une methode login() + l'erreur dans l'html.
+
+					Imbrication de formgroups -> dans le .ts mettre le username et login dans un account, modifier le
+					account.username.
+					Dans l'html ajouter une div qui entoure les username et password et mettre un formgroupename
+
+					FormArray -> créer un nouveau composant pour la demo :
+					faire une liste de topics qu'on ajoute dans un array quand on écrit dans l'input, qui s'affiche dans
+					une liste endessous et possiblité d'effacer les topics qd on clique dessus
+
+					FormBuilder (reprendre le FormArray en retirant ce qui a déjà été fait)
+					Montrer les 2 approches
+				</aside>
+			</section>
+
+			<!-- -------------------- EXERCICE #7 - Reactive forms --------------------- -->
+
+			<section>
+				<h1>EXERCICE #7</h1>
+			</section>
+			<section>
+				<h2>Exercice #7 : Change pwd</h2>
+				Créer un formulaire avec 3 champs :
+				- old password (required + doit exister (utiliser 1234))
+				- new password (required)
+				- confirm password (required + doit correspondre au new password)
+			</section>
+
+			<!-- ---------------------------- HTTP Service ----------------------------- -->
+			<section>
+				<h1>HTTP Service</h1>
+			</section>
+			<section>
+				- Read
+				- Create
+				- Update
+				- Delete
+				- OnInit
+				- Création d'un service
+				- Gestion des erreurs
+				- Data service
+				<aside>
+					-> Read
+					- créer composant posts
+					- importer http module dans app.module
+					- ajouter http : httpclient dans constructeur
+					- http.get('https://jsonplaceholder.typicode.com/posts')
+					- .subscribe(response => { console.log(response)})
+					- Afficher la liste des posts dans le html via un ngForOf
+					-> Create
+					- input dans le html avec keydown.enter
+					- createPost dans controller
+					- faire un this.http.post -> mais pas dispo, donc ajouter le "private" devant http dans le
+					constructeur
+					- refactorer l'url pour ne pas la réécrire à chaque fois
+					- ajouter la var post avec l'input value + .subscribe
+					- placer le post en première position
+					-> Update
+					- ajouter bouton dans html dans les boucles
+					- ajouter methode dans controller
+					- put ou patch ? Le premier envoie tout le post à modifier, le second, uniquement une propriété du
+					post à modifier
+					- si on laisse this.url tel quel, ça renvoit un 404 ---> il faut préciser /id du post à modifier
+					-> Delete
+					- changer bouton update par un Delete
+					- créer la methode, avec un splice
+					-> OnInit
+					- tout ce qu'il y a dans constructeur, le mettre dans OnInit
+					-> separation of concern
+					- trop de choses dans notre classe : on fait plusieurs choses différentes, et en plus des détails,
+					comme la crétion d'url, etc, plein de changements à faire dans différents endroits si je fais la
+					même chose un peu partout
+					- on doit créer un service.
+					-> service
+					-> handle errors
+					- unexpected :
+					-- ajouter un param dans le subscribe après le response
+					-- error => et une alert ("unexpected error") + console.log(error) (dans une vraie appli on aurait
+					un log dans une db et la notif s'afficherait dans un coin)
+					- expected :
+					-- juste ajouter une condition avec des if error.status == 404 par exemple. Typer l'error pour
+					l'accès à l'intellisense
+					- Les erreurs spécifiques ne devraient pas être dans le controller mais dans le service
+
+
+
+					-> data services. Pour regrouper tous les services identiques (exemple là on a posts create, on
+					pourrait avoir courses create...)
+					- créer datas.services.ts
+					-- y copier tout ce que contient post.service
+					-- renommer en génériques (getAll, create, update, delete) et les params en "resource"
+					-- supprimer ce qu'il y a dans post.service, extend, super et param url en +
+					-- corriger dans post.component
+
+				</aside>
+			</section>
+			<!-- -------------------------- EXERCICE : Requêtes HTTP ------------------- -->
+			<section>
+				Exercice : créer liste de followers
+				- https://api.github.com/users/octocat/followers
+				- Afficher avatar_url, html_url et login
+
+			</section>
+
+			<!-- ----------------------------- LES ROUTES ------------------------------ -->
+			<section>
+				Les ROUTES
+				- routerLink à la place des href = single page application (pas de rechargement de la page)
+			</section>
+			<section>
+				Exercice : blog archives
+				- créer un nouveau projet avec 2 pages
+				- homepage affiche la liste des liens vers archives (2017/1, 2017/2, 2017/3)
+				- quand on clique sur un lien on navigue vers : /archives/2017/1
+				- sur la page de détail on a un bouton back qui ramène vers la homepage
+			</section>
+
+			<!-- ----------------------- Redux - in progress... ------------------------ -->
+			<section>
+				<h1>Redux</h1>
+			</section>
+			<section>
+				Redux
+				- Facilite la mise à jour de données entre les différents composants (synchronisation)
+				Quand l'utiliser ?
+				- Si on a des copies indépendantes de la même données dans de multiples endroits
+				- Si on a de multiples vues qui ont besoin de travailler avec la même data et rester synchro
+				- Si la data peut-être modifiée par de multiples utilisateurs et/ou acteurs
+				3 éléments :
+				- Store
+				- Actions
+				- Reducers
+				Pure function
+				- même input -> même output
+				- pas d'effets de bord
+				Installer Redux
+				<aside>
+					Va servir pour simplifier la mise à jour de datas entre des vues qui n'ont pas de relation
+					parent/enfant
+					Exemple concret :
+					- navbar (navbar) FB qui affiche le nombre de nouveau message (pastille rouge nombre msg privés en
+					haut à droite)
+					- fenêtre de messenger (messages) ouverte sur l'écran : donc en plus des mises à jour des messages
+					qui s'affichent il faut la mise à jour de la pastille
+					- popin d'une autre conversation (messagetab) ouverte en bas à droite -> là aussi il faut une mise à
+					jour
+					=> ces trois éléments n'ont pas de relation parent/enfant, mais doivent être synchro
+
+					conseillé pour les moyennes à grosses applications pcq même si ça permet de taper moins de code, ça
+					vient avec plein "boilerplate" en +
+
+					3 éléments :
+					- Store : (A Single JS object that contains the state of the application) peut être considéré comme
+					une DB locale côté client
+					exemple : { messages: [...], newMessages: 5, chatSoundEnabled: true}
+					- Actions : (Plain JS objects that represent something that has happened) -> la plupart du temps il
+					s'agit d'évènements
+					Il faut faire une différences entre les commandes et les évènements.
+					-- les commandes, ça resprente une action qui devrait arriver, comme par exemple l'envoi d'un
+					message.
+					-- l'évènement, c'est plutôt une action qui a eu lieu, comme par exemple le fait qu'un message a été
+					envoyé.
+					Dans le cas des actions de redux, on est plutôt du côté des events
+					Exemple, quand un user lit un msg, on obtient un objet du genre : { type: 'MARK_AS_READ'}
+					et si un user poste un nouveau msg, on obtient un objet du genre : { type: 'POST_MESSAGE', body :
+					'...'}
+					Donc, des données sans aucune structure logique avec, par convention, une propriété type pour
+					spécifier quel est le type de l'action
+					- Reducer : (A function that specifies how the state how the state changes in response to an action)
+					on peut le considérer comme un action handler ou event handler
+					Le reducer n'a pas le droit de modifier les état des éléments, c'est le job du Store
+
+					Pure functions
+					- same input -> same output
+					- no side effect
+					Exemple de function impure :
+					function increment(input) {
+					input.count++ // l'état de input initialement à 0, est incrément à chaque appel !
+					// dans une pure function on peut pas "muter" ou modifier les arguments
+					}
+
+					function increment(input) {
+					service.addMessage(...) // on fait un appel au backend = un exemple de "side effect" : à chaque
+					appel, l'état de notre application sur la db est modifié
+					}
+
+					function increment(input) {
+					input.count += Math.random() // on update la valeur de input en utilisant le random, donc on ne peut
+					pas garantir que l'output sera le même à chaque fois
+					// dans une pure function on ne peut pas utiliser du random ou quoi que ce soit d'autre qui retourne
+					une valeur différente à chaque appel
+					}
+
+
+					Comment transformer en pure function ?
+					function increment(input) {
+					return { count : input.count + 1 } // input sera tjrs le même, output sera tjrs le même objet...
+					}
+
+					Transformer cette fonction pour qu'elle ressemble à un reducer :
+					function reducer (state, action) {
+					switch (action.type) {
+					case 'INCREMENT' :
+					return { count: state.count + 1 }
+					}
+					}
+
+					Bénéfices ?
+					- Plus facile à tester
+					- On peut facilement undo/redo
+					- Time travel debugging (à voir + tard)
+
+					Installer Redux
+					ngrx/store: https://github.com/ngrx/store
+					ng2-redux: https://github.com/angular-redux/ng2-redux
+					ce sont les 2 plus populaires et sont très similaires
+
+					<!-- npm install @ngrx/store  => puis ensuite tout configurer à la main (utile la première fois qu'on donne le cours)
+		ng add @ngrx/store => fait toute la config tout seul (crée les reducers, importe dans app module, ajoute dans le packages.json,...) -->
+
+					npm install
+				</aside>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [{
+					src: 'plugin/markdown/marked.js'
+				},
+				{
+					src: 'plugin/markdown/markdown.js'
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!-- --------------------------- Etape #1 - read --------------------------- -->
+
+<!-- <ul class="list-group">
+    <li
+    *ngFor="let post of posts"
+    class="list-group-item"
+    >
+    {{ post.title }}
+    </li>
+</ul> -->
+
+<!-- -------------------------- Etape #2 - create -------------------------- -->
+
+<!-- <input
+    (keyup.enter)="createPost(title)" #title
+    type="text" class="form-control" />
+<ul class="list-group">
+    <li
+    *ngFor="let post of posts"
+    class="list-group-item"
+    >
+    {{ post.title }}
+    </li>
+</ul> -->
+
+<!-- -------------------------- Etape #3 - update -------------------------- -->
+
+<!-- <input
+    (keyup.enter)="createPost(title)" #title
+    type="text" class="form-control" />
+<ul class="list-group">
+    <li
+    *ngFor="let post of posts"
+    class="list-group-item"
+    [class.active]="post.isRead">
+    <button
+        (click)="updatePost(post)"
+        class="btn btn-info btn-sm">Update</button>
+    {{ post.title }}
+    </li>
+</ul> -->
+
+<!-- -------------------------- Etape #4 - delete -------------------------- -->
+
+<input
+    (keyup.enter)="createPost(title)" #title
+    type="text" class="form-control" />
+<ul class="list-group">
+    <li
+    *ngFor="let post of posts"
+    class="list-group-item"
+    [class.active]="post.isRead"
+    >
+    <button
+        (click)="updatePost(post)"
+        class="btn btn-info btn-sm">Update</button>&nbsp;
+    <button
+        (click)="deletePost(post)"
+        class="btn btn-danger btn-sm">Delete</button>
+    {{ post.title }}
+    </li>
+</ul>

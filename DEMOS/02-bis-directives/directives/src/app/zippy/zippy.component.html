@@ -1,0 +1,9 @@
+<div class="zippy">
+    <div class="zippy-heading" (click)="toggle()">
+        {{ title }}
+        <fa-icon [icon]="isExpanded ? chUp : chDo"></fa-icon>
+    </div>
+    <div *ngIf="isExpanded" class="zippy-body" [class.expanded]="isExpanded">
+        <ng-content></ng-content>
+    </div>
+</div>
